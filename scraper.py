@@ -1,5 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
+import subprocess
+
 
 
 # This is going to be a python script in where you take a "list of" and then create a dictionary from it
@@ -26,3 +28,5 @@ file1 = open("gundamDict.txt","a")
 for x in unique:
     file1.write(x+"\n")
 file1.close();
+
+subprocess.call(["hashcat","--force","--show", "-a", "0", "-m", "0", "gundamHash.hash", "gundamDict.txt"])
